@@ -3,6 +3,7 @@ import pandas as pd
 import joblib
 import plotly.express as px
 import os
+import io
 
 # 1. Page Configuration
 st.set_page_config(page_title="Drink Calorie Analyzer", page_icon="🥤", layout="wide")
@@ -10,26 +11,20 @@ st.set_page_config(page_title="Drink Calorie Analyzer", page_icon="🥤", layout
 st.title("🥤 Highest Calorie Drinks Analyzer & Predictor")
 st.markdown("This app uses a **Decision Tree Classifier** to analyze and predict drink categories based on nutritional values.")
 
-# 2. Complete Dataset with Values (Fixed syntax error here)
-drink_data = {
-    "Drink_Name": [
-        "Baskin-Robbins Chocolate Oreo Shake (Large)", 
-        "Sonic Peanut Butter Fudge Shake (Large)",
-        "Smoothie King The Hulk Strawberry (40 oz)", 
-        "Dairy Queen Chocolate Malt (Large)",
-        "Dunkin' Frozen Chocolate (Large, Whole Milk)", 
-        "Jamba Juice Peanut Butter Moo'd Smoothie (Large)",
-        "McDonald's Chocolate Shake (Large)", 
-        "Starbucks White Hot Chocolate (Venti, Whole Milk)",
-        "Panera Bread Frozen Caramel Latte (16 oz)", 
-        "Coca-Cola (Big Gulp / 32 oz)"
-    ],
-    "Calories":,
-    "Sugar_g":,
-    "Fat_g":,
-    "Category": ["Shake", "Shake", "Smoothie", "Shake", "Frozen Drink", "Smoothie", "Shake", "Hot Coffee/Chocolate", "Frozen Coffee", "Soda"]
-}
-df = pd.DataFrame(drink_data)
+# 2. Loading complete CSV data dynamically to bypass syntax cutoffs
+csv_data = """Drink_Name,Calories,Sugar_g,Fat_g,Category
+Baskin-Robbins Chocolate Oreo Shake (Large),2600,263,135,Shake
+Sonic Peanut Butter Fudge Shake (Large),2340,196,140,Shake
+Smoothie King The Hulk Strawberry (40 oz),1928,250,64,Smoothie
+Dairy Queen Chocolate Malt (Large),1350,170,45,Shake
+Dunkin' Frozen Chocolate (Large, Whole Milk),1120,166,40,Frozen Drink
+Jamba Juice Peanut Butter Moo'd Smoothie (Large),1090,169,29,Smoothie
+McDonald's Chocolate Shake (Large),840,122,22,Shake
+Starbucks White Hot Chocolate (Venti, Whole Milk),640,78,24,Hot Coffee/Chocolate
+Panera Bread Frozen Caramel Latte (16 oz),590,82,15,Frozen Coffee
+Coca-Cola (Big Gulp / 32 oz),360,98,0,Soda"""
+
+df = pd.read_csv(io.StringIO(csv_data))
 
 # 3. Sidebar: Model Prediction Setup
 st.sidebar.header("🤖 Predict Drink Category")
