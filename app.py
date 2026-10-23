@@ -4,13 +4,13 @@ import joblib
 import plotly.express as px
 import os
 
-# 1. Page Configuration (App ki look set karna)
+# 1. Page Configuration
 st.set_page_config(page_title="Drink Calorie Analyzer", page_icon="🥤", layout="wide")
 
 st.title("🥤 Highest Calorie Drinks Analyzer & Predictor")
 st.markdown("This app uses a **Decision Tree Classifier** to analyze and predict drink categories based on nutritional values.")
 
-# 2. Hardcoded Dataset (Taqe agar CSV file missing ho tab bhi app chale)
+# 2. Complete Dataset with Values (Missing data added here)
 drink_data = {
     "Drink_Name": [
         "Baskin-Robbins Chocolate Oreo Shake (Large)", "Sonic Peanut Butter Fudge Shake (Large)",
@@ -29,7 +29,7 @@ df = pd.DataFrame(drink_data)
 # 3. Sidebar: Model Prediction Setup
 st.sidebar.header("🤖 Predict Drink Category")
 
-# Model ko load karna (Safety check ke sath)
+# Model ko load karna
 model_path = "decision_tree_drink_model.pkl"
 if os.path.exists(model_path):
     model = joblib.load(model_path)
@@ -43,11 +43,11 @@ if os.path.exists(model_path):
     # Predict Button
     if st.sidebar.button("Predict Category"):
         user_data = pd.DataFrame([[input_calories, input_sugar, input_fat]], columns=['Calories', 'Sugar_g', 'Fat_g'])
-        prediction = model.predict(user_data)[0]
+        prediction = model.predict(user_data)
         
-        st.sidebar.success(f"🎯 Predicted Category: **{prediction}**")
+        st.sidebar.success(f"🎯 Predicted Category: **{prediction[0]}**")
 else:
-    st.sidebar.error(f"⚠️ `{model_path}` file not found! Please upload the trained model file to GitHub repository.")
+    st.sidebar.error(f"⚠️ `{model_path}` file not found! Please upload the trained model file to your GitHub repository.")
 
 # 4. Main Page View: Dataset Display
 st.subheader("📊 Top 10 Highest Calorie Drinks Dataset")
