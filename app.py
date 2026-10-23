@@ -10,14 +10,19 @@ st.set_page_config(page_title="Drink Calorie Analyzer", page_icon="🥤", layout
 st.title("🥤 Highest Calorie Drinks Analyzer & Predictor")
 st.markdown("This app uses a **Decision Tree Classifier** to analyze and predict drink categories based on nutritional values.")
 
-# 2. Complete Dataset with Values (Missing data added here)
+# 2. Complete Dataset with Values (Fixed syntax error here)
 drink_data = {
     "Drink_Name": [
-        "Baskin-Robbins Chocolate Oreo Shake (Large)", "Sonic Peanut Butter Fudge Shake (Large)",
-        "Smoothie King The Hulk Strawberry (40 oz)", "Dairy Queen Chocolate Malt (Large)",
-        "Dunkin' Frozen Chocolate (Large, Whole Milk)", "Jamba Juice Peanut Butter Moo'd Smoothie (Large)",
-        "McDonald's Chocolate Shake (Large)", "Starbucks White Hot Chocolate (Venti, Whole Milk)",
-        "Panera Bread Frozen Caramel Latte (16 oz)", "Coca-Cola (Big Gulp / 32 oz)"
+        "Baskin-Robbins Chocolate Oreo Shake (Large)", 
+        "Sonic Peanut Butter Fudge Shake (Large)",
+        "Smoothie King The Hulk Strawberry (40 oz)", 
+        "Dairy Queen Chocolate Malt (Large)",
+        "Dunkin' Frozen Chocolate (Large, Whole Milk)", 
+        "Jamba Juice Peanut Butter Moo'd Smoothie (Large)",
+        "McDonald's Chocolate Shake (Large)", 
+        "Starbucks White Hot Chocolate (Venti, Whole Milk)",
+        "Panera Bread Frozen Caramel Latte (16 oz)", 
+        "Coca-Cola (Big Gulp / 32 oz)"
     ],
     "Calories":,
     "Sugar_g":,
